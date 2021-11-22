@@ -7,12 +7,14 @@ void titel_bank();
 void meun();
 
 
-typedef struct {
-   char  cin[15];
-   char  nom[15];
-   char  prenom[15];
-   long int montant; 
-}user;
+// typedef struct {
+//    char  cin[15];
+//    char  nom[15];
+//    char  prenom[15];
+//    long int montant; 
+// }user;
+
+/* ======================================= start fontion main ==================================  */  
 
 int main() {
 
@@ -20,13 +22,12 @@ int main() {
     long int montant;
     int menu ;
     
-    returns:
+    returns :
     system("cls");
     titel_bank();
-    printf("\n");
+    meun();
 
-    do
-    {
+    do{
         printf("\n\n");
         printf("donnez choix : ");
         scanf("%d", &menu);
@@ -58,9 +59,39 @@ int main() {
         printf("ecrivez votre montant :");
         scanf("%d", &montant);
         create(cin,nom,prenom,montant);
+
         goto returns ;
         break;
-    
+
+    case 2:
+        system("cls");
+        printf(" ********************************* 2.a jouter plusieures acc  *********************************\n");
+        int nomber_acc ;
+        printf("ecrivez nomber compte  :");
+        scanf("%d", &nomber_acc);
+
+        for (int i = 0 ; i < nomber_acc ; i++)
+        {
+            printf("ecrivez votre nom %d :",i+1);
+            scanf("%s", &nom);
+
+            printf("ecrivez votre prenom %d  :",i+1);
+            scanf("%s", &prenom);
+
+            printf("ecrivez votre cin %d  :",i+1);
+            scanf("%s", &cin);
+
+            printf("ecrivez votre montant  %d  :",i+1);
+            scanf("%d", &montant);
+
+            create(cin,nom,prenom,montant);
+            system("cls");
+
+        }
+
+        goto returns ;
+        break;
+
     default:
         printf("error !! ");
         break;
@@ -68,9 +99,9 @@ int main() {
 
     return 0 ;
 }
+/* ======================================= start fontion main  ==================================  */  
 
-
-
+/* ======================================= start fontion void ==================================  */  
 
 void titel_bank(){
     printf("===================================================================\n");
@@ -88,6 +119,10 @@ void meun(){
     printf("1.quitter application  \n");
 }
 
+void info_user(){
+    
+}
+
 char create(char cin[15] , char nom[15] , char prenom[15] , long int montant){
     FILE* fp ;
     fp = fopen("data.txt", "a");
@@ -95,3 +130,5 @@ char create(char cin[15] , char nom[15] , char prenom[15] , long int montant){
     fclose(fp);
     return 0 ;
 }
+
+/* ======================================= end fontion void ==================================  */  
