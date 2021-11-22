@@ -4,6 +4,15 @@
 
 char create(char* cin , char* nom , char* prenom , long int montant );
 void titel_bank();
+void meun();
+
+
+typedef struct {
+   char  cin[15];
+   char  nom[15];
+   char  prenom[15];
+   long int montant; 
+}user;
 
 int main() {
 
@@ -15,14 +24,22 @@ int main() {
     system("cls");
     titel_bank();
     printf("\n");
-    printf("Bonjour qu'est-ce que vous voulez : \n");
-    printf("1.Creer un compte :");
-    printf("2.a jouter plusieures acc :");
-    printf("3.opertions :");
-    printf("1.affichage :");
-    printf("1.pedilisation :");
-    printf("1.quitter application :");
-    scanf("%d", &menu);
+
+    do
+    {
+        printf("\n\n");
+        printf("donnez choix : ");
+        scanf("%d", &menu);
+
+        if (menu>8 || menu < 1)
+        {
+            printf("votre choix doit etre compris entre ( 1 et 8 )  : ");
+            scanf("%d", &menu);
+        }
+        
+
+    } while (menu > 8 || menu < 1);
+    
 
     switch (menu)
     {
@@ -61,6 +78,15 @@ void titel_bank(){
     printf("===================================================================\n");
 };
 
+void meun(){
+    printf("Bonjour qu'est-ce que vous voulez : \n");
+    printf("1.Creer un compte \n");
+    printf("2.a jouter plusieures acc  \n");
+    printf("3.opertions  \n");
+    printf("1.affichage  \n");
+    printf("1.pedilisation  \n");
+    printf("1.quitter application  \n");
+}
 
 char create(char cin[15] , char nom[15] , char prenom[15] , long int montant){
     FILE* fp ;
